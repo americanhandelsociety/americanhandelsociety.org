@@ -10,6 +10,14 @@ ul {
     -webkit-padding-start: 0;
 }
 
+@media screen and (min-width: 768px) {
+  .jumbotron .h1, .jumbotron h1 {
+      font-family: 'Lovers Quarrel', cursive;
+      font-size: 120px;
+      font-family: 'Lovers Quarrel', cursive;
+  }
+}
+
 .container-fluid {
   padding-right: 0;
   padding-left: 0;
@@ -17,43 +25,131 @@ ul {
 
 .navbar {
   margin-bottom: 0;
+  border-radius: 0;
 }
 
-.carousel {
-  max-height: 350px;
-  overflow: hidden;
+.img-thumbnail {
+  border: 0;
+  border-radius: 8px;
 }
 
-.item {
-  // padding-right: 0;
-  // padding-left: 0;
-  // max-width: 100%;
-  // margin: 0;
+div#handel {
+    background: url("/assets/handel-bw.jpg") no-repeat center center;
+    padding-right: 0;
+    padding-left: 0;
+    max-width: 100%;
+    height: 300px;
+    margin: 0;
+    height: 300px;
+    background-position-x: 50%;
+    background-position-y: 50%;
+    display: flex;
+    color: #fff;
+}
+
+div#explore {
+    background: url("/assets/discovery-bw.jpg") no-repeat center center;
+    padding-right: 0;
+    padding-left: 0;
+    max-width: 100%;
+    height: 300px;
+    margin: 0;
+    height: 300px;
+    background-position-x: 50%;
+    background-position-y: 50%;
+    display: flex;
+    color: #fff;
+}
+
+div#join {
+    background: url("/assets/handel-monument.jpg") no-repeat center center;
+    padding-right: 0;
+    padding-left: 0;
+    max-width: 100%;
+    height: 300px;
+    margin: 0;
+    height: 300px;
+    background-position-x: 50%;
+    background-position-y: 50%;
+    display: flex;
+    color: #fff;
+}
+
+div#events {
+    background: url("/assets/Senesino_Cuzzoni_Berenstadt_BW.jpg") no-repeat center center;
+    padding-right: 0;
+    padding-left: 0;
+    max-width: 100%;
+    height: 500px;
+    margin: 0;
+    background-position-x: 50%;
+    background-position-y: 50%;
+    display: flex;
+    color: #fff;
 }
 
 
-// .item#senesino {
-//     background: url("/assets/Senesino_Cuzzoni_Berenstadt_BW.jpg") no-repeat center center;
-//     padding-right: 0;
-//     padding-left: 0;
-//     max-width: 100%;
-//     margin: 0;
-//     height: 65vh;
-//     background-position-x: 50%;
-//     background-position-y: 50%;
-//     background-attachment: fixed;
-//     display: flex;
-// }
-
-// .item#cantata {
-//     background: url("/assets/HandelDiscovery-750.jpg") no-repeat center center;
-//     padding-right: 0;
-//     padding-left: 0;
-//     max-width: 100%;
-//     margin: 0;
-//     height: 65vh;
-//     background-position-x: 50%;
-//     background-position-y: 50%;
-//     background-attachment: fixed;
-//     display: flex;
-// }
+// Code from http://codepen.io/mrsahar/pen/PNGMLV
+.btn22 img {
+    width: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+.btn22 .ovrly {
+    background: rgba(0, 0, 0, 0.5);
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    opacity: 0;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+.btn22 .buttons {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.btn22 .buttons .fa {
+    background: rgb(256, 256, 256);
+    -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
+    display: inline-block;
+    line-height: 40px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    // width: 40px;
+    // height: 40px;
+    -webkit-transform: scaleY(0);
+    -moz-transform: scaleY(0);
+    -ms-transform: scaleY(0);
+    -o-transform: scaleY(0);
+    transform: scaleY(0);
+    position: relative;
+    -webkit-transition: -webkit-transform 0.3s;
+    -moz-transition: -moz-transform 0.3s;
+    -o-transition: -o-transform 0.3s;
+    transition: transform 0.3s;
+    color: rgba(50, 50, 50, 0.9);
+}
+.btn22:hover .buttons .fa {
+    -webkit-transform: scaleY(1);
+    -moz-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    -o-transform: scaleY(1);
+    transform: scaleY(1);
+}
+.btn22:hover .ovrly {
+    opacity: 1;
+}
