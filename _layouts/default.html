@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <title>
+      {% if page.title %}
+        {{page.title}} -
+      {% endif %}
+      {{site.name}}
+    </title>
+
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content='{{ site.description }}' name='description'>
+    <meta content='{{ site.name }}' name='author'>
+
+    <link href='/favicon.ico' rel='shortcut icon'>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/custom.css"/>
+
+    <script type="text/javascript" src="/js/lib/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/js/lib/bootstrap.min.js"></script>
+
+  </head>
+  <body>
+
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">American Handel Society</a>
+        </div>
+
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav pull-right" id="dropdown-results">
+              <li>
+                <a href="/about/"> About</a>
+              </li>
+              <li>
+                <a href="/contact/"> Contact</a>
+              </li>
+              <li>
+                <a href="/join/" class="btn-print"> Join</a>
+              </li>
+
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class='container-fluid'>
+      {{content}}
+    </div>
+
+  </body>
+</html>
