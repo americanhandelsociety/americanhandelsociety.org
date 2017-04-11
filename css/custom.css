@@ -1,0 +1,174 @@
+body {
+  font-family: 'IM Fell English SC', serif;
+}
+
+footer li {
+  list-style: none;
+}
+
+ul {
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    -webkit-margin-start: 0;
+    -webkit-margin-end: 0;
+    -webkit-padding-start: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .jumbotron .h1, .jumbotron h1 {
+      font-family: 'Lovers Quarrel', cursive;
+      font-size: 120px;
+      font-family: 'Lovers Quarrel', cursive;
+  }
+}
+
+.container-fluid {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.navbar {
+  margin-bottom: 0;
+  border-radius: 0;
+  background-color: #fff;
+}
+
+.navbar a {
+  color: #333333;
+}
+
+.jumbotron {
+  background-color: #7D1935;
+  color: #fff;
+}
+
+.container .jumbotron, .container-fluid .jumbotron { border-radius: 0; }
+
+.img-thumbnail {
+  border: 0;
+  border-radius: 8px;
+}
+
+div#handel {
+    background: url("/assets/handel-bw.jpg") no-repeat center center;
+    padding-right: 0;
+    padding-left: 0;
+    max-width: 100%;
+    height: 300px;
+    margin: 0;
+    height: 300px;
+    background-position-x: 50%;
+    background-position-y: 50%;
+    display: flex;
+    color: #fff;
+}
+
+div#explore {
+    background: url("/assets/discovery-bw.jpg") no-repeat center center;
+    padding-right: 0;
+    padding-left: 0;
+    max-width: 100%;
+    height: 300px;
+    margin: 0;
+    height: 300px;
+    background-position-x: 50%;
+    background-position-y: 50%;
+    display: flex;
+    color: #fff;
+}
+
+div#join {
+    background: url("/assets/handel-monument.jpg") no-repeat center center;
+    padding-right: 0;
+    padding-left: 0;
+    max-width: 100%;
+    height: 300px;
+    margin: 0;
+    height: 300px;
+    background-position-x: 50%;
+    background-position-y: 50%;
+    display: flex;
+    color: #fff;
+}
+
+div#events {
+    background: url("/assets/Senesino_Cuzzoni_Berenstadt_BW.jpg") no-repeat center center;
+    padding-right: 0;
+    padding-left: 0;
+    max-width: 100%;
+    height: 500px;
+    margin: 0;
+    background-position-x: 50%;
+    background-position-y: 50%;
+    display: flex;
+    color: #fff;
+}
+
+
+// Code from http://codepen.io/mrsahar/pen/PNGMLV
+.btn22 img {
+    width: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+.btn22 .ovrly {
+    background: rgba(0, 0, 0, 0.5);
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    opacity: 0;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+.btn22 .buttons {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.btn22 .buttons .fa {
+    -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
+    display: inline-block;
+    line-height: 40px;
+    text-align: center;
+    text-decoration: none;
+    -webkit-transform: scaleY(0);
+    -moz-transform: scaleY(0);
+    -ms-transform: scaleY(0);
+    -o-transform: scaleY(0);
+    transform: scaleY(0);
+    position: relative;
+    -webkit-transition: -webkit-transform 0.3s;
+    -moz-transition: -moz-transform 0.3s;
+    -o-transition: -o-transform 0.3s;
+    transition: transform 0.3s;
+    border-radius: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color:#333;
+    background-color: #4A96AD;
+    color: #fff;
+    font-family: 'IM Fell English SC', serif;
+    font-size: 1.5em;
+}
+.btn22:hover .buttons .fa {
+    -webkit-transform: scaleY(1);
+    -moz-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    -o-transform: scaleY(1);
+    transform: scaleY(1);
+}
+.btn22:hover .ovrly {
+    opacity: 1;
+}
