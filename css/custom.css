@@ -1,3 +1,7 @@
+body {
+  font-family: 'IM Fell English SC', serif;
+}
+
 footer li {
   list-style: none;
 }
@@ -26,7 +30,19 @@ ul {
 .navbar {
   margin-bottom: 0;
   border-radius: 0;
+  background-color: #fff;
 }
+
+.navbar a {
+  color: #333333;
+}
+
+.jumbotron {
+  background-color: #7D1935;
+  color: #fff;
+}
+
+.container .jumbotron, .container-fluid .jumbotron { border-radius: 0; }
 
 .img-thumbnail {
   border: 0;
@@ -120,17 +136,13 @@ div#events {
     transform: translate(-50%, -50%);
 }
 .btn22 .buttons .fa {
-    background: rgb(256, 256, 256);
     -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
     -moz-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
     box-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
     display: inline-block;
     line-height: 40px;
-    font-size: 16px;
     text-align: center;
     text-decoration: none;
-    // width: 40px;
-    // height: 40px;
     -webkit-transform: scaleY(0);
     -moz-transform: scaleY(0);
     -ms-transform: scaleY(0);
@@ -141,7 +153,14 @@ div#events {
     -moz-transition: -moz-transform 0.3s;
     -o-transition: -o-transform 0.3s;
     transition: transform 0.3s;
-    color: rgba(50, 50, 50, 0.9);
+    border-radius: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color:#333;
+    background-color: #4A96AD;
+    color: #fff;
+    font-family: 'IM Fell English SC', serif;
+    font-size: 1.5em;
 }
 .btn22:hover .buttons .fa {
     -webkit-transform: scaleY(1);
