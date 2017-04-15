@@ -1,9 +1,3 @@
- $(document).ready(function() {
-
-            $(window).load(function() {
-
-                $('#loadOverlay').fadeOut('slow');
-
-            })
-
-        })
+$(document).ready(function() {
+    $('#loadOverlay').fadeOut('slow');
+})
