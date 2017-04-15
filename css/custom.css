@@ -1,17 +1,9 @@
 body {
-  font-family: 'IM Fell English SC', serif;
+  font-family: 'Asar', serif;
 }
 
-footer li {
-  list-style: none;
-}
-
-ul {
-    -webkit-margin-before: 0;
-    -webkit-margin-after: 0;
-    -webkit-margin-start: 0;
-    -webkit-margin-end: 0;
-    -webkit-padding-start: 0;
+h1, h2, h3, h4, h5, nav {
+    font-family: 'IM Fell English SC', serif;
 }
 
 @media screen and (min-width: 768px) {
@@ -37,6 +29,39 @@ ul {
   color: #333333;
 }
 
+.navbar#main-nav {
+  margin-bottom: 0;
+  border-radius: 0;
+  background-color: #7D1935;
+}
+
+.navbar#main-nav .navbar-brand {
+    font-size: 1.5em;
+}
+
+.navbar#main-nav .navbar-nav li a {
+    font-size: 1.2em;
+}
+
+.navbar#main-nav .navbar-brand,
+.navbar#main-nav .navbar-nav li a.main-drop {
+    line-height: 80px;
+    height: 80px;
+    padding-top: 0;
+}
+
+.navbar#main-nav a {
+  color: #fff;
+}
+
+.navbar#main-nav a.item {
+  color: #333333;
+}
+
+.nav>li>a.main-drop:focus, .nav>li>a.main-drop:hover {
+    background-color: #991E41;
+}
+
 .jumbotron {
   background-color: #7D1935;
   color: #fff;
@@ -49,7 +74,7 @@ ul {
   border-radius: 8px;
 }
 
-div#handel {
+div#about {
     background: url("/assets/handel-bw.jpg") no-repeat center center;
     padding-right: 0;
     padding-left: 0;
@@ -154,13 +179,13 @@ div#events {
     -o-transition: -o-transform 0.3s;
     transition: transform 0.3s;
     border-radius: 4px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 12px;
+    padding-right: 12px;
     color:#333;
     background-color: #4A96AD;
     color: #fff;
     font-family: 'IM Fell English SC', serif;
-    font-size: 1.5em;
+    font-size: 1.8em;
 }
 .btn22:hover .buttons .fa {
     -webkit-transform: scaleY(1);
