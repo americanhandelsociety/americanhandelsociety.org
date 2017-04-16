@@ -6,6 +6,10 @@ h1, h2, h3, h4, h5, nav {
     font-family: 'IM Fell English SC', serif;
 }
 
+p, a, div#join-page li {
+    font-size: 1.3em;
+}
+
 @media screen and (min-width: 768px) {
   .jumbotron .h1, .jumbotron h1 {
       font-family: 'Lovers Quarrel', cursive;
@@ -27,6 +31,14 @@ h1, h2, h3, h4, h5, nav {
 
 .navbar a {
   color: #333333;
+}
+
+.navbar-toggle .icon-bar {
+    background-color: #333333;
+}
+
+.navbar#main-nav .navbar-toggle .icon-bar {
+    background-color: #fff;
 }
 
 .navbar#main-nav {
@@ -63,8 +75,10 @@ h1, h2, h3, h4, h5, nav {
 }
 
 .jumbotron {
-  background-color: #7D1935;
-  color: #fff;
+    background-color: #7D1935;
+    color: #fff;
+    max-height: 280px;
+    margin-bottom: 1.5em;
 }
 
 @media screen and (min-width: 768px) {
@@ -86,13 +100,13 @@ div#about {
     padding-right: 0;
     padding-left: 0;
     max-width: 100%;
-    height: 300px;
+    height: 260px;
     margin: 0;
-    height: 300px;
     background-position-x: 50%;
     background-position-y: 50%;
     display: flex;
     color: #fff;
+    margin-bottom: 1.5em;
 }
 
 div#explore {
@@ -100,13 +114,13 @@ div#explore {
     padding-right: 0;
     padding-left: 0;
     max-width: 100%;
-    height: 300px;
+    height: 260px;
     margin: 0;
-    height: 300px;
     background-position-x: 50%;
     background-position-y: 50%;
     display: flex;
     color: #fff;
+    margin-bottom: 1.5em;
 }
 
 div#join {
@@ -114,13 +128,13 @@ div#join {
     padding-right: 0;
     padding-left: 0;
     max-width: 100%;
-    height: 300px;
+    height: 260px;
     margin: 0;
-    height: 300px;
     background-position-x: 50%;
     background-position-y: 50%;
     display: flex;
     color: #fff;
+    margin-bottom: 1.5em;
 }
 
 div#events {
@@ -134,10 +148,10 @@ div#events {
     background-position-y: 50%;
     display: flex;
     color: #fff;
+    margin-bottom: 1.5em;
 }
 
-
-// Code from http://codepen.io/mrsahar/pen/PNGMLV
+/* Code from http://codepen.io/mrsahar/pen/PNGMLV */
 .btn22 img {
     width: 100%;
     position: relative;
