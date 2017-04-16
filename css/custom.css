@@ -6,6 +6,10 @@ h1, h2, h3, h4, h5, nav {
     font-family: 'IM Fell English SC', serif;
 }
 
+p, a, div#join-page li {
+    font-size: 1.3em;
+}
+
 @media screen and (min-width: 768px) {
   .jumbotron .h1, .jumbotron h1 {
       font-family: 'Lovers Quarrel', cursive;
@@ -27,6 +31,14 @@ h1, h2, h3, h4, h5, nav {
 
 .navbar a {
   color: #333333;
+}
+
+.navbar-toggle .icon-bar {
+    background-color: #333333;
+}
+
+.navbar#main-nav .navbar-toggle .icon-bar {
+    background-color: #fff;
 }
 
 .navbar#main-nav {
