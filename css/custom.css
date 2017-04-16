@@ -96,7 +96,7 @@ p, a, div#join-page li {
 }
 
 div#about {
-    background: url("/assets/handel-bw.jpg") no-repeat center center;
+    background: url("{{site.baseurl}}/assets/handel-bw.jpg") no-repeat center center;
     padding-right: 0;
     padding-left: 0;
     max-width: 100%;
@@ -110,7 +110,7 @@ div#about {
 }
 
 div#explore {
-    background: url("/assets/discovery-bw.jpg") no-repeat center center;
+    background: url("{{site.baseurl}}/assets/discovery-bw.jpg") no-repeat center center;
     padding-right: 0;
     padding-left: 0;
     max-width: 100%;
@@ -124,7 +124,7 @@ div#explore {
 }
 
 div#join {
-    background: url("/assets/handel-monument.jpg") no-repeat center center;
+    background: url("{{site.baseurl}}/assets/handel-monument.jpg") no-repeat center center;
     padding-right: 0;
     padding-left: 0;
     max-width: 100%;
@@ -138,7 +138,7 @@ div#join {
 }
 
 div#events {
-    background: url("/assets/Senesino_Cuzzoni_Berenstadt_BW.jpg") no-repeat center center;
+    background: url("{{site.baseurl}}/assets/Senesino_Cuzzoni_Berenstadt_BW.jpg") no-repeat center center;
     padding-right: 0;
     padding-left: 0;
     max-width: 100%;
