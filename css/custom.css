@@ -4,15 +4,20 @@ title: CSS stylesheet
 
 /* General and Atomic */
 body {
-  font-family: 'Asar', serif;
+  font-family: 'Antic Slab', serif;
 }
 
-h1, h2, h3, h4, h5, nav {
+
+h1, h2, h3, h4, h5, nav, footer > p {
     font-family: 'IM Fell English SC', serif;
 }
 
-p, a, li {
-    font-size: 1.3em;
+h1, h2, h3, h4, h5 {
+    margin-top: 34px;
+}
+
+p, li {
+    font-size: 140%;
 }
 
 .container-fluid {
@@ -23,7 +28,28 @@ p, a, li {
 .container .jumbotron, .container-fluid .jumbotron { border-radius: 0; }
 
 .red-font { color: #7D1935; }
-/* Navbar */
+
+.btn-red {
+    background-color: #7D1935;
+    color: #fff;
+}
+
+.btn-red:hover {
+    background-color: #991E41;
+    color: #fff;
+}
+
+.btn-blue {
+    background-color: #4A96AD;
+    color: #fff;
+}
+
+.btn-blue:hover {
+    background-color: #62A7BC;
+    color: #fff;
+}
+
+/* Navbar and Footer */
 .navbar {
   margin-bottom: 0;
   border-radius: 0;
@@ -179,6 +205,23 @@ div#events {
     margin-bottom: 1.5em;
 }
 
+.footer {
+    margin-top: 3em;
+    background: linear-gradient(
+          rgba(0, 0, 0, 0.8),
+          rgba(270, 270, 270, 0.3)
+        ), 
+        url("{{site.baseurl}}/assets/handelsmessiah-l.jpg") no-repeat center center;
+    height: 120px;
+    background-size: cover;
+    color: #fff;
+    border-top: 12px solid #7D1935;
+}
+
+footer > p {
+    font-family: 'IM Fell English SC', serif;
+    margin-top: 2em;
+}
 /* Code from http://codepen.io/mrsahar/pen/PNGMLV */
 .btn22 img {
     width: 100%;
@@ -250,4 +293,29 @@ div#events {
 
 .btn22:hover .ovrly {
     opacity: 1;
+}
+
+/* Styles to prevent Google layer from covering Carto results */
+.leaflet-google-layer {
+    z-index: 0 !important;
+}
+
+.leaflet-map-pane {
+    z-index: 100;
+}
+
+/* Styles for info window. Class names can vary. */
+.infoBox {
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+
+/* Styles for map div */
+div#mapCanvas {
+  height: 500px;
+  width: 100%;
 }
