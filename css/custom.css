@@ -206,16 +206,14 @@ div#events {
 }
 
 .footer {
-    margin-top: 3em;
-    background: linear-gradient(
-          rgba(0, 0, 0, 0.8),
-          rgba(270, 270, 270, 0.3)
+    margin-top: 4em;
+     background: linear-gradient(
+          #fff,
+          rgba(255, 255, 255, 0.2)
         ), 
         url("{{site.baseurl}}/assets/handelsmessiah-l.jpg") no-repeat center center;
-    height: 120px;
+    height: 200px;
     background-size: cover;
-    color: #fff;
-    border-top: 12px solid #7D1935;
 }
 
 footer > p {
