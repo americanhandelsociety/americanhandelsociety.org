@@ -75,7 +75,7 @@ p, li {
 }
 
 .navbar#main-nav .navbar-brand {
-    font-size: 1.2em;
+    font-size: 1.5em;
 }
 
 .navbar#main-nav .navbar-nav li a {
@@ -122,15 +122,22 @@ p, li {
 }
 
 @media screen and (max-width: 768px) {
-  .jumbotron .h1, .jumbotron h1 {
+    .jumbotron .h1, .jumbotron h1 {
       font-family: 'Lovers Quarrel', cursive;
       font-size: 38px;
       font-family: 'Lovers Quarrel', cursive;
-  }
+    }
 
-  .jumbotron .h5, .jumbotron h5 {
+    .jumbotron .h5, .jumbotron h5 {
         font-size: 14px;
-  }
+    }
+
+    .navbar#main-nav .navbar-brand, .navbar#main-nav .navbar-nav li a.main-drop {
+        line-height: 20px;
+        height: 50px;
+        padding-top: 15px;
+        font-size: 120%;
+    }
 }
 
 .img-thumbnail {
