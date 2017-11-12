@@ -28,3 +28,4 @@ include: ['_pages']
 exclude: ['vendor']
 kramdown:
   input: GFM
+

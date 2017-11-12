@@ -27,6 +27,17 @@ layout: default
         </div>
       </div>
 
+      <div class="row">
+        <div class="col-md-12">
+          {% for file in site.static_files %}
+            {{file.basename}}
+            {% if file.path contains 'newsletter' %}
+              <p><a href="{{site.baseurl}}/{{file.path}}" target="_blank">{{file.path}}</a></p>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+
     </div>
   </div>
 </div>

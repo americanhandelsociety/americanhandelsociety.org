@@ -119,7 +119,7 @@ $(function() {
     addIcon: function() {
       this.centerMark = new L.Marker(this.currentPinpoint, {
         icon: (new L.Icon({
-          iconUrl: 'push_pin.png',
+          iconUrl: 'assets/push_pin.png',
           iconSize: [30, 30],
           iconAnchor: [10, 32]
           })
