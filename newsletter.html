@@ -29,12 +29,17 @@ layout: default
 
       <div class="row">
         <div class="col-md-12">
-          {% for file in site.static_files %}
-            {{file.basename}}
-            {% if file.path contains 'newsletter' %}
-              <p><a href="{{site.baseurl}}/{{file.path}}" target="_blank">{{file.path}}</a></p>
-            {% endif %}
+          {% assign static_files = site.static_files | sort_newsletters %}
+
+          {% for year in static_files %}
+            {{year[0]}}
+            {% for newsletters in year %}
+              {% for letter in newsletters %}
+                <p><a href="{{site.baseurl}}/{{letter.path}}" target="_blank">{{ letter.path | clean_newsletter }}</a></p>
+              {% endfor %}
+            {% endfor %}
           {% endfor %}
+            
         </div>
       </div>
 
