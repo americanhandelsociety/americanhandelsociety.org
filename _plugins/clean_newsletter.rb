@@ -41,3 +41,14 @@ module Jekyll
 end
 
 Liquid::Template.register_filter(Jekyll::NewsLetterCleaner)
+
+module Jekyll
+  module Alphabetize
+    def alphabetize(input)
+      input.sort_by! { |el| el.path.downcase }
+      input.reverse
+    end
+  end
+end
+
+Liquid::Template.register_filter(Jekyll::Alphabetize)
