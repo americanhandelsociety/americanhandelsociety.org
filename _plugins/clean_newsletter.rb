@@ -4,7 +4,7 @@ module Jekyll
       # Select only newsletters from assets array
       select_assets = Array.new
       for file in input
-        if file.path.include? 'newsletter'
+        if file.path.include? 'assets/newsletter'
           select_assets << file
         end
       end
@@ -32,7 +32,7 @@ module Jekyll
       if input
         basename = input.gsub("/assets/newsletter/", "").gsub(".pdf", "")
         regex = /\w{6}\_\d{4}/
-        title = basename[regex].sub("_", " ")
+        title = basename[regex].sub("_", " ").capitalize
 
         return title
       end
