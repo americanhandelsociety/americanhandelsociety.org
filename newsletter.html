@@ -27,6 +27,33 @@ layout: default
         </div>
       </div>
 
+      <div class="row">
+        <div class="col-md-12">
+          {% assign static_files = site.static_files | sort_newsletters %}
+          <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            {% for year in static_files %}
+              <div class="panel panel-default">
+                <div data-toggle="collapse" data-parent="#accordion" data-target="#collapse{{year[0]}}"  class="panel-heading" role="tab" id="headingOne">
+                  <h3 class="panel-title">
+                    <a role="button" aria-expanded="true" aria-controls="collapseOne">
+                      {{year[0]}}
+                    </a>
+                  </h3>
+                </div>
+                <div id="collapse{{year[0]}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                  <div class="panel-body">
+                    {% assign newsletters = year[1] | alphabetize %}
+                    {% for letter in newsletters %}
+                      <p><a href="{{site.baseurl}}/{{letter.path}}" target="_blank">{{ letter.path | clean_newsletter }}</a></p>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div> <!-- End of accordian  -->
+        </div>
+      </div>
+
     </div>
   </div>
 </div>

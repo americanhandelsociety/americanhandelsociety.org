@@ -49,6 +49,14 @@ p, li {
     color: #fff;
 }
 
+.panel-title {
+    font-size: 24px;
+}
+
+.panel-heading {
+    cursor: pointer;
+}
+
 /* Navbar and Footer */
 .navbar {
   margin-bottom: 0;
