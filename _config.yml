@@ -24,7 +24,7 @@ github_username:  americanhandelsociety
 # Build settings
 sass:
   style: :compressed
-include: ['_pages']
+include: ['_pages', '_plugins']
 exclude: ['vendor']
 kramdown:
   input: GFM
