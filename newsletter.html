@@ -31,7 +31,31 @@ layout: default
         </div>
       </div>
 
-      
+      <div class="row">
+        <div id="showNews" class="col-md-12">
+          <p><strong>Show all years <i class="fa fa-caret-down" aria-hidden="true"></i></strong></p>
+        </div>
+        <div id="lessNews" class="col-md-12" style="display:none">
+          <p><strong>Show less <i class="fa fa-caret-up" aria-hidden="true"></i></strong></p>
+        </div>
+        <div id="allNews" class="col-md-12" style="display:none">
+          {% assign static_files = site.static_files | sort_newsletters %}
+          <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            {% for year in static_files %}
+              <div class="panel panel-default">
+                <div data-toggle="collapse" data-parent="#accordion" data-target="#collapse{{year[0]}}"  class="panel-heading" role="tab" id="headingOne">
+                  <h3 class="panel-title">
+                    <a role="button" aria-expanded="true" aria-controls="collapseOne">
+                      {{year[0]}}
+                    </a>
+                  </h3>
+                </div>
+                
+              </div>
+            {% endfor %}
+          </div> <!-- End of accordian  -->
+        </div>
+      </div>
 
     </div>
   </div>

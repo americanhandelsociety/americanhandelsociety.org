@@ -1,28 +1,28 @@
-# module Jekyll
-#   module NewsLetterSorter
-#     def sort_newsletters(input)
-#       # Select only newsletters from assets array
-#       select_assets = Array.new
-#       for file in input
-#         if file.path.include? 'assets/newsletter'
-#           select_assets << file
-#         end
-#       end
+module Jekyll
+  module NewsLetterSorter
+    def sort_newsletters(input)
+      # Select only newsletters from assets array
+      select_assets = Array.new
+      for file in input
+        if file.path.include? 'assets/newsletter'
+          select_assets << file
+        end
+      end
 
-#       # Put newsletters in order by year
-#       select_assets.sort_by! { |file| file.path.scan(/\d{4}/) }
+      # Put newsletters in order by year
+      select_assets.sort_by! { |file| file.path.scan(/\d{4}/) }
 
-#       # Create a hash of newsletters with year as key
-#       ht = Hash.new {|h,k| h[k]=[]}
-#       regex = /\d{4}/
-#       for s in select_assets.reverse
-#         ht[s.path[regex]] << s
-#       end
+      # Create a hash of newsletters with year as key
+      ht = Hash.new {|h,k| h[k]=[]}
+      regex = /\d{4}/
+      for s in select_assets.reverse
+        ht[s.path[regex]] << s
+      end
 
-#       return ht
-#     end
-#   end
-# end
+      return ht
+    end
+  end
+end
 
 # Liquid::Template.register_filter(Jekyll::NewsLetterSorter)
 
