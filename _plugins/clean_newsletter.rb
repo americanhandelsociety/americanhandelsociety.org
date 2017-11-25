@@ -24,7 +24,7 @@ module Jekyll
   end
 end
 
-# Liquid::Template.register_filter(Jekyll::NewsLetterSorter)
+Liquid::Template.register_filter(Jekyll::NewsLetterSorter)
 
 # module Jekyll
 #   module NewsLetterCleaner
