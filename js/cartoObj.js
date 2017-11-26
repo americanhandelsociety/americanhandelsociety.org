@@ -1,11 +1,11 @@
 $(function() {
 
   function CartoObj() {
-    this.cartoTableName   = 'parks_public_art';
-    this.cartoUserName    = 'datamade';
+    this.cartoTableName   = '';
+    this.cartoUserName    = '';
     this.mapDivName       = 'mapCanvas';
-    this.fields           = 'art, artist, park_name';
-    this.mapCentroid      = new L.LatLng(41.901557, -87.630360);
+    this.fields           = '';
+    this.mapCentroid      = new L.LatLng(51.509865, -0.118092);
     this.defaultZoom      = 11;
     this.map              = null;
     this.lastClickedLayer = null;
@@ -150,11 +150,11 @@ $(function() {
     // Customize this!
     makeInfoText: function(data) {
       var artist = ''
-      var work = "<h3> " + data.art + "</h3>"
-      var park = "<p><i class='fa fa-map-marker' aria-hidden='true'></i> " + data.park_name + "</p>"
+      var work = "<h3> " + data + "</h3>"
+      var park = "<p><i class='fa fa-map-marker' aria-hidden='true'></i> " + data + "</p>"
 
       if (data.artist.trim() != '') {
-        artist = "<p><i class='fa fa-user' aria-hidden='true'></i> " + data.artist + "</p>"
+        artist = "<p><i class='fa fa-user' aria-hidden='true'></i> " + data + "</p>"
       }
 
       var html = work + artist + park

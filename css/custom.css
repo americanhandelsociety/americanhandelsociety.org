@@ -102,6 +102,10 @@ p, li {
 }
 
 .navbar#main-nav a.item {
+  color: #333;
+}
+
+.navbar#main-nav a.item:hover {
   color: #333333;
 }
 
@@ -123,17 +127,16 @@ p, li {
     }
 
     .jumbotron .h1, .jumbotron h1 {
+      font-size: 100px;
       font-family: 'Lovers Quarrel', cursive;
-      font-size: 108px;
-      font-family: 'Lovers Quarrel', cursive;
+      margin-bottom: 10px;
     }
 }
 
 @media screen and (max-width: 768px) {
     .jumbotron .h1, .jumbotron h1 {
       font-family: 'Lovers Quarrel', cursive;
-      font-size: 38px;
-      font-family: 'Lovers Quarrel', cursive;
+      margin-top: 10px;
     }
 
     .jumbotron .h5, .jumbotron h5 {
@@ -144,7 +147,15 @@ p, li {
         line-height: 20px;
         height: 50px;
         padding-top: 15px;
-        font-size: 120%;
+        font-size: 20px;
+    }
+
+    .navbar#main-nav .navbar-nav li a {
+        font-size: 20px;
+    }
+
+    .navbar#main-nav a.item {
+      color: #fff;
     }
 }
 
@@ -199,7 +210,7 @@ div#about {
 }
 
 div#explore {
-    background: url("{{site.baseurl}}/assets/discovery-bw.jpg") no-repeat center center;
+    background: url("{{site.baseurl}}/assets/The_king_shall_rejoice_BL_Add_MS_30308_f15v.jpg") no-repeat center center;
 }
 
 div#join {
@@ -220,6 +231,10 @@ div#events {
     margin-bottom: 1.5em;
 }
 
+.jumbotron h5 {
+    margin-top: 5px;
+}
+
 .footer {
     margin-top: 5.5em;
      background: linear-gradient(
@@ -227,7 +242,7 @@ div#events {
           rgba(255, 255, 255, 0.2)
         ), 
         url("{{site.baseurl}}/assets/handelsmessiah-l.jpg") no-repeat center center;
-    height: 200px;
+    height: 180px;
     background-size: cover;
 }
 
