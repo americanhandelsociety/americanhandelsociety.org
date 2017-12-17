@@ -156,6 +156,10 @@ $(function() {
       return html
     },
 
+    modalPop: function(data) {
+      $('#locationModal').modal(data)
+    }
+
   }
 
   // Create a new instance of the CartoObj, and then call functions.
@@ -188,7 +192,7 @@ $(function() {
           myCarto.clearInfoBox("infoBox");
         });
         layerZero.on('featureClick', function(e, latlng, pos, data, subLayerIndex){
-          // You can add something here, too, e.g., a modal window.
+          myCarto.modalPop(data);
         });
     }).error(function(e) {
       console.log(e)

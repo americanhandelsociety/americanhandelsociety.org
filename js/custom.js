@@ -12,4 +12,9 @@ $(document).ready(function() {
       $('#lessNews').hide()
       $('#showNews').show();
     });
-})
+    
+    function modalPop(data) {
+      console.log("clickeddddd")
+      $('#locationModal').modal(data)
+    }
+});
