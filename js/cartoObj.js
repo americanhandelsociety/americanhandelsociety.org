@@ -1,10 +1,10 @@
 $(function() {
 
   function CartoObj() {
-    this.cartoTableName   = '';
-    this.cartoUserName    = '';
+    this.cartoTableName   = 'americanhandelsociety_map';
+    this.cartoUserName    = 'americanhandelsociety';
     this.mapDivName       = 'mapCanvas';
-    this.fields           = '';
+    this.fields           = 'address, short_description, description, info_url';
     this.mapCentroid      = new L.LatLng(51.509865, -0.118092);
     this.defaultZoom      = 11;
     this.map              = null;
@@ -149,15 +149,9 @@ $(function() {
 
     // Customize this!
     makeInfoText: function(data) {
-      var artist = ''
-      var work = "<h3> " + data + "</h3>"
-      var park = "<p><i class='fa fa-map-marker' aria-hidden='true'></i> " + data + "</p>"
-
-      if (data.artist.trim() != '') {
-        artist = "<p><i class='fa fa-user' aria-hidden='true'></i> " + data + "</p>"
-      }
-
-      var html = work + artist + park
+      var short_description = "<h4 class='infoBox-title'> " + data.short_description + "</h4>"
+      var address = "<p><i class='fa fa-map-marker' aria-hidden='true'></i> " + data.address + "</p>"
+      var html = short_description + address
 
       return html
     },
