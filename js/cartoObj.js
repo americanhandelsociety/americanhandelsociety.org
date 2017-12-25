@@ -4,7 +4,7 @@ $(function() {
     this.cartoTableName   = 'americanhandelsociety_map';
     this.cartoUserName    = 'americanhandelsociety';
     this.mapDivName       = 'mapCanvas';
-    this.fields           = 'address, short_description, description, info_url';
+    this.fields           = 'address, short_description, long_description, info_url';
     this.mapCentroid      = new L.LatLng(51.509865, -0.118092);
     this.defaultZoom      = 11;
     this.map              = null;
@@ -147,7 +147,6 @@ $(function() {
         this.map.removeLayer(this.radiusCircle);
     },
 
-    // Customize this!
     makeInfoText: function(data) {
       var short_description = "<h4 class='infoBox-title'> " + data.short_description + "</h4>"
       var address = "<p><i class='fa fa-map-marker' aria-hidden='true'></i> " + data.address + "</p>"
@@ -157,6 +156,21 @@ $(function() {
     },
 
     modalPop: function(data) {
+      // Clear previous content
+      $('.short-description, #address-header, #long-description, #info-url').empty();
+      
+      // Add new content
+      $('.short-description').append(data.short_description);
+      $('#address-header').append('<i class="fa fa-map-marker" aria-hidden="true"></i> ' + data.address);
+      $('#long-description').append(data.long_description);
+
+      if (data.info_url) {
+        infoUrl = "<a href='" + data.info_url + "' target='_blank'><strong><i class='fa fa-info-circle' aria-hidden='true'></i> Learn more</strong></a>"
+        console.log(infoUrl)
+        $('#info-url').append(infoUrl);
+      }
+
+      // Open the modal
       $('#locationModal').modal(data)
     }
 
