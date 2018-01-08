@@ -202,19 +202,19 @@ div#about, div#explore, div#join {
 }
 
 div#about {
-    background: url("/americanhandelsociety.org/assets/handel-bw.jpg") no-repeat center center;
+    background: url("/assets/handel-bw.jpg") no-repeat center center;
 }
 
 div#explore {
-    background: url("/americanhandelsociety.org/assets/The_king_shall_rejoice_BL_Add_MS_30308_f15v.jpg") no-repeat center center;
+    background: url("/assets/The_king_shall_rejoice_BL_Add_MS_30308_f15v.jpg") no-repeat center center;
 }
 
 div#join {
-    background: url("/americanhandelsociety.org/assets/handel-monument.jpg") no-repeat center center;
+    background: url("/assets/handel-monument.jpg") no-repeat center center;
 }
 
 div#events {
-    background: url("/americanhandelsociety.org/assets/Senesino_Cuzzoni_Berenstadt_BW.jpg") no-repeat center center;
+    background: url("/assets/Senesino_Cuzzoni_Berenstadt_BW.jpg") no-repeat center center;
     padding-right: 0;
     padding-left: 0;
     max-width: 100%;
@@ -237,7 +237,7 @@ div#events {
           #fff,
           rgba(255, 255, 255, 0.2)
         ), 
-        url("/americanhandelsociety.org/assets/handelsmessiah-l.jpg") no-repeat center center;
+        url("/assets/handelsmessiah-l.jpg") no-repeat center center;
     height: 180px;
     background-size: cover;
 }
