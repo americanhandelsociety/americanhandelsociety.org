@@ -54,7 +54,7 @@ layout: default
                   <div class="panel-body">
                     {% assign newsletters = year[1] | alphabetize %}
                     {% for letter in newsletters %}
-                      <p><a href="{{site.baseurl}}/{{letter.path}}" target="_blank">{{ letter.path | clean_newsletter }}</a></p>
+                      <p><a href="{{letter.path}}" target="_blank">{{ letter.path | clean_newsletter }}</a></p>
                     {% endfor %}
                   </div>
                 </div>
