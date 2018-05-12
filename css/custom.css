@@ -53,6 +53,12 @@ p, li {
     cursor: pointer;
 }
 
+@media screen and (max-width: 768px) {
+    .img-research.img-thumbnail {
+        width: 75%;
+    }
+}
+
 /* Navbar and Footer */
 .navbar {
   margin-bottom: 0;
