@@ -1,11 +1,17 @@
 /* General and Atomic */
-body {
-  font-family: 'Antic Slab', serif;
+:root {
+  --red-color: #7D1935;
+  --blue-color: #4A96AD;
+  --font-headers: 'IM Fell English SC', serif;
+  --font-text: 'Antic Slab', serif;
 }
 
+body {
+    font-family: var(--font-text);
+}
 
 h1, h2, h3, h4, h5, nav, footer > p {
-    font-family: 'IM Fell English SC', serif;
+    font-family: var(--font-headers);
 }
 
 h1, h2, h3, h4, h5 {
@@ -23,10 +29,10 @@ p, li {
 
 .container .jumbotron, .container-fluid .jumbotron { border-radius: 0; }
 
-.red-font { color: #7D1935; }
+.red-font { color: var(--red-color); }
 
 .btn-red {
-    background-color: #7D1935;
+    background-color: var(--red-color);
     color: #fff;
 }
 
@@ -36,7 +42,7 @@ p, li {
 }
 
 .btn-blue {
-    background-color: #4A96AD;
+    background-color: var(--blue-color);
     color: #fff;
 }
 
@@ -81,7 +87,7 @@ p, li {
 .navbar#main-nav {
   margin-bottom: 0;
   border-radius: 0;
-  background-color: #7D1935;
+  background-color: var(--red-color);
 }
 
 .navbar#main-nav .navbar-brand {
@@ -116,7 +122,7 @@ p, li {
 }
 
 .jumbotron {
-    background-color: #7D1935;
+    background-color: var(--red-color);
     color: #fff;
     max-height: 280px;
     margin-bottom: 1.5em;
@@ -173,7 +179,7 @@ p, li {
     padding-left: 16px;
     padding-right: 16px;
     color: #333;
-    background-color: #4A96AD;
+    background-color: var(--blue-color);
     font-size: 1.6em;
     position: absolute;
     top: 50%;
@@ -187,7 +193,7 @@ p, li {
 
 .mobile-btn a {
     color: #fff;
-    font-family: 'IM Fell English SC', serif;
+    font-family: var(--font-headers);
 }
 
 .mobile-btn a:hover {
@@ -249,7 +255,7 @@ div#events {
 }
 
 footer > p {
-    font-family: 'IM Fell English SC', serif;
+    font-family: var(--font-headers);
     margin-top: 2em;
 }
 
@@ -318,9 +324,9 @@ footer > p {
     padding-left: 12px;
     padding-right: 12px;
     color:#333;
-    background-color: #4A96AD;
+    background-color: var(--blue-color);
     color: #fff;
-    font-family: 'IM Fell English SC', serif;
+    font-family: var(--font-headers);
     font-size: 1.8em;
 }
 
@@ -365,7 +371,7 @@ div#mapCanvas {
 }
 
 .modal-header {     
-    background-color: #7D1935;
+    background-color: var(--red-color);
     color: #fff;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
