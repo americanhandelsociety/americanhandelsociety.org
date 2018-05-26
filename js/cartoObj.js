@@ -6,7 +6,7 @@ $(function() {
     this.mapDivName       = 'mapCanvas';
     this.fields           = 'address, short_description, long_description, info_url';
     this.mapCentroid      = new L.LatLng(51.509865, -0.118092);
-    this.defaultZoom      = 11;
+    this.defaultZoom      = 12;
     this.map              = null;
     this.lastClickedLayer = null;
     this.geojson          = null;
@@ -77,7 +77,7 @@ $(function() {
 
     setZoom: function(radius) {
       var zoom = '';
-      if (radius >= 8050) zoom = 12; // 5 miles
+      if (radius >= 8050) zoom = 16; // 5 miles
       else if (radius >= 3220) zoom = 13; // 2 miles
       else if (radius >= 1610) zoom = 14; // 1 mile
       else if (radius >= 805) zoom = 15; // 1/2 mile
@@ -131,7 +131,8 @@ $(function() {
 
     addCircle: function(radius) {
       this.radiusCircle = new L.circle(this.currentPinpoint, radius, {
-          fillColor:'#1d5492',
+          // fillColor:'#1d5492',
+          fillColor:'#A9A9A9',
           fillOpacity:'0.2',
           stroke: false,
           clickable: false
