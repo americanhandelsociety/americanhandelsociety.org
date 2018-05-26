@@ -131,7 +131,6 @@ $(function() {
 
     addCircle: function(radius) {
       this.radiusCircle = new L.circle(this.currentPinpoint, radius, {
-          // fillColor:'#1d5492',
           fillColor:'#A9A9A9',
           fillOpacity:'0.2',
           stroke: false,
