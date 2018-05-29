@@ -6,7 +6,7 @@ $(function() {
     this.mapDivName       = 'mapCanvas';
     this.fields           = 'address, short_description, long_description, info_url';
     this.mapCentroid      = new L.LatLng(51.509865, -0.118092);
-    this.defaultZoom      = 12;
+    this.defaultZoom      = 11;
     this.map              = null;
     this.lastClickedLayer = null;
     this.geojson          = null;
