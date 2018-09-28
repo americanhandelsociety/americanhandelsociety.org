@@ -1,7 +1,7 @@
 # americanhandelsociety.org
-The American Handel Society (AHS), an established 501(c)3 non-profit, seeks to foster study of the life, works, and times of George Frideric Handel and to encourage and support the performance of his music.
+The [American Handel Society (AHS)](http://americanhandelsociety.org/), an established 501(c)3 non-profit, seeks to foster study of the life, works, and times of George Frideric Handel and to encourage and support the performance of his music.
 
-This repo contains the code and content for the AHS website. It's open source! Use this code as the initial blueprint for building other such organization pages. 
+This repo contains the code and content for the AHS website. It's open source! Use this code as the initial blueprint for building other such organizational pages. 
 
 ## Get Started
 
@@ -18,7 +18,7 @@ Then, navigate to http://localhost:4000/, and view the site in your browser.
 
 ## Deployment (for now)
 
-`americanhandelsociety.org` uses custom-built plugins, [not supported by Github Pages](https://help.github.com/articles/adding-jekyll-plugins-to-a-github-pages-site/). This make deployment a little tricky. Until the organization can set up a designated server, `americanhandelsociety.org` implements [an easy hack](https://github.com/jekyll/jekyll/issues/325#issuecomment-1135567) for deploying to Github Pages.
+`americanhandelsociety.org` uses custom-built plugins, [not supported by Github Pages](https://help.github.com/articles/adding-jekyll-plugins-to-a-github-pages-site/). This makes deployment a little tricky. Until the organization can set up a designated server, `americanhandelsociety.org` implements [an easy hack](https://github.com/jekyll/jekyll/issues/325#issuecomment-1135567) for deploying to Github Pages.
 
 ```bash
 # Build the site on the up-to-date master, then turn off jekyll build and move the _site repo elsewhere.
