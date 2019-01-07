@@ -35,6 +35,19 @@ $(function() {
             tiles.addTo(this.map);
         },
 
+        addInfoBox: function(mapPosition, divName, text) {
+          var text = text || ''
+          var info = L.control({position: mapPosition});
+
+          info.onAdd = function (map) {
+            this._div = L.DomUtil.create('div', divName);
+            this._div.innerHTML = text;
+            return this._div;
+          };
+
+          info.addTo(this.map);
+        },
+
         doSearch: function() {
             this.clearSearch();
             var mapObjCopy = this;
@@ -124,12 +137,60 @@ $(function() {
             this.centerMark.addTo(this.map);
         },
 
+
+
+    // TODO: do we need `L.geoJson` for this?
+    onEachFeature: function(feature, layer) {
+        if (feature.properties) {
+
+            var center = layer.getBounds().getCenter();
+
+            if (map){
+                layer.layerPopup = L.popup(customOptions, layer)
+                                    .setLatLng(center)
+                                    .setContent(feature.properties.popupContent);
+
+                layer.on('click', function(e){
+                    console.log("asdkfjl")
+                    window.location = feature.properties.detail_link
+                });
+
+                layer.on('mouseover', function(e){
+                    console.log(e.target.feature.properties)
+                    infoBox.update(e.target.feature.properties);
+                    e.target.setStyle({'fillOpacity': 0.6, 'color': "{{MAP_CONFIG.highlight_color}}"});
+                });
+
+                layer.on('mouseout', function(e){
+                    infoBox.clear();
+                    e.target.setStyle({'fillOpacity': 0.2, 'color': "{{MAP_CONFIG.color}}"});
+                })
+
+                layer.on('tableover', function(e){
+                    infoBox.update(e.target.feature.properties);
+                    e.target.setStyle({'fillOpacity': 0.6, 'color': "{{MAP_CONFIG.highlight_color}}"})
+                });
+
+                layer.on('tableout', function(e){
+                    infoBox.clear();
+                    map.closePopup(e.target.layerPopup);
+                    e.target.setStyle({'fillOpacity': 0.2, 'color': "{{MAP_CONFIG.color}}"});
+                });
+            }
+        }
+    }
+
+
+
+
     } // Close MapObj
+
 
     // Create a new instance of the MapObj
     var myMap = new MapObj
 
     myMap.initiateMap()
+    myMap.addInfoBox('bottomright', 'infoBox', 'Click on a location to learn more');
     
     $.getJSON("assets/americanhandelsociety_map.geojson",function(data) {
         myMap.districts = L.mapbox.featureLayer(data, {
@@ -137,6 +198,7 @@ $(function() {
                     weight: 1, 
                     color: "#333", 
                     fillOpacity: 0 },
+            onEachFeature: onEachFeature
         });
         myMap.districts.addTo(myMap.map);
     });

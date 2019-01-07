@@ -369,7 +369,7 @@ footer > p {
     margin-top: 5px;
 }
 
-div#mapCanvas {
+div#map_canvas {
     height: 500px;
     width: 100%;
 }
