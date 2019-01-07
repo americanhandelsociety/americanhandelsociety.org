@@ -7,6 +7,8 @@ $(function() {
         this.districts = null;
         this.search_result = null;
         this.map = null;
+        this.centerMark = '';
+        this.radiusCircle = '';
         // Create geocoder object to access Google Maps API. Add underscore to insure variable safety.
         this._geocoder = new google.maps.Geocoder();
         // Turn on autocomplete to predict address when user begins to type.
@@ -33,24 +35,17 @@ $(function() {
             tiles.addTo(this.map);
         },
 
-        addAllLocations: function() {
-            $map = this.map
-
-            $.getJSON("assets/americanhandelsociety_map.geojson",function(data) {
-                this.districts = L.mapbox.featureLayer(data, {
-                    style: {opacity: 1, 
-                            weight: 1, 
-                            color: "#333", 
-                            fillOpacity: 0 },
-                });
-                this.districts.addTo($map);
-            });
-        },
-
         doSearch: function() {
-            clearSearch();
+            this.clearSearch();
+            var mapObjCopy = this;
+
+            var radius = $("#search-radius").val();
+            if (radius == null && address != "") {
+                radius = 8050;
+            }
+
             var address = $("#search-address").val();
-            $map = this.map
+            mapObjCopy.map = this.map
 
             if (address != "") {
                 // $("#reset").show()
@@ -59,53 +54,92 @@ $(function() {
                 }
 
                 this._geocoder.geocode( { 'address': address}, function(results, status) {
-                    console.log(status, "!")
                     if (status == google.maps.GeocoderStatus.OK) {
-                        currentPinpoint = [results[0].geometry.location.lat(), results[0].geometry.location.lng()];
+                        mapObjCopy.currentPinpoint = [results[0].geometry.location.lat(), results[0].geometry.location.lng()];
 
                         $.address.parameter('address', encodeURIComponent(address));
 
-                        centerMark = new L.Marker(currentPinpoint, { icon: (new L.Icon({
-                            iconUrl: "assets/push_pin.png",
-                            iconSize: [32, 32],
-                            iconAnchor: [10, 32]
-                        }))}).addTo($map);
+                        mapObjCopy.setZoom(radius);
+                        mapObjCopy.addCircle(radius);
+                        mapObjCopy.addIcon()
+                        
+                        mapObjCopy.map.removeLayer(mapObjCopy.districts);
 
-                        var RADIUS = 3050;
-                        var filterCircle = L.circle(currentPinpoint, RADIUS, {
-                            opacity: 1,
-                            weight: 1,
-                            fillOpacity: 0.4
-                        }).addTo($map);
-
-                        var latlng = L.latLng(currentPinpoint[0], currentPinpoint[1]);
+                        var latlng = L.latLng(mapObjCopy.currentPinpoint[0], mapObjCopy.currentPinpoint[1]);
 
                         $.getJSON("assets/americanhandelsociety_map.geojson",function(data) {
-                            districts = L.mapbox.featureLayer(data)
+                            mapObjCopy.districts = L.mapbox.featureLayer(data)
 
-                            districts.setFilter(function showLocations(feature) {
-                                return latlng.distanceTo(L.latLng(feature.geometry.coordinates[1], feature.geometry.coordinates[0])) < RADIUS
+                            mapObjCopy.districts.setFilter(function showLocations(feature) {
+                                return latlng.distanceTo(L.latLng(feature.geometry.coordinates[1], feature.geometry.coordinates[0])) < radius
                             });
 
-                            districts.addTo($map);
+                            mapObjCopy.districts.addTo(mapObjCopy.map);
                         });
 
                     }
                 });
             } // Close geocoder.geocode
             
-
         },
 
+        clearSearch: function() {
+          if (this.centerMark)
+            this.map.removeLayer(this.centerMark);
+          if (this.radiusCircle)
+            this.map.removeLayer(this.radiusCircle);
+        },
 
+        setZoom: function(radius) {
+            var zoom = '';
+            if (radius >= 8050) zoom = 16; // 5 miles
+            else if (radius >= 3220) zoom = 13; // 2 miles
+            else if (radius >= 1610) zoom = 14; // 1 mile
+            else if (radius >= 805) zoom = 15; // 1/2 mile
+            else if (radius >= 400) zoom = 16; // 1/4 mile
+            else zoom = 16;
+
+            this.map.setView(new L.LatLng( this.currentPinpoint[0], this.currentPinpoint[1] ), zoom)
+        },
+
+        addCircle: function(radius) {
+            this.radiusCircle = L.circle(this.currentPinpoint, radius, {
+                                    opacity: 1,
+                                    weight: 1,
+                                    fillOpacity: 0.4
+                                });
+
+            this.radiusCircle.addTo(this.map)
+        },
+
+        addIcon: function() {
+            this.centerMark = new L.Marker(this.currentPinpoint, { 
+                icon: (new L.Icon({
+                    iconUrl: "assets/push_pin.png",
+                    iconSize: [30, 30],
+                    iconAnchor: [10, 32]
+                })
+            )});
+
+            this.centerMark.addTo(this.map);
+        },
 
     } // Close MapObj
 
-    // Create a new instance of the MapObj, and then call functions.
+    // Create a new instance of the MapObj
     var myMap = new MapObj
 
     myMap.initiateMap()
-    myMap.addAllLocations()
+    
+    $.getJSON("assets/americanhandelsociety_map.geojson",function(data) {
+        myMap.districts = L.mapbox.featureLayer(data, {
+            style: {opacity: 1, 
+                    weight: 1, 
+                    color: "#333", 
+                    fillOpacity: 0 },
+        });
+        myMap.districts.addTo(myMap.map);
+    });
 
     $("#btnSearch").on("click", function() {
         myMap.doSearch();
