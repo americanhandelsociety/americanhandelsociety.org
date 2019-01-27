@@ -5,7 +5,7 @@ title: CSS stylesheet
 /* General and Atomic */
 :root {
   --red-color: #7D1935;
-  --blue-color: #4A96AD;
+  --blue-color: #267abf;
   --font-headers: 'IM Fell English SC', serif;
   --font-text: 'Antic Slab', serif;
 }
@@ -26,6 +26,10 @@ p, li {
     font-size: 140%;
 }
 
+a {
+    color: var(--blue-color);
+}
+
 .container-fluid {
   padding-right: 0;
   padding-left: 0;
@@ -40,7 +44,7 @@ p, li {
     color: #fff;
 }
 
-.btn-red:hover {
+.btn-red:hover, .btn-red:focus {
     background-color: #991E41;
     color: #fff;
 }
@@ -51,7 +55,7 @@ p, li {
 }
 
 .btn-blue:hover {
-    background-color: #62A7BC;
+    background-color: #4093d9;
     color: #fff;
 }
 

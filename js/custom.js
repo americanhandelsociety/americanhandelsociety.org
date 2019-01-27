@@ -23,9 +23,9 @@ $(document).ready(function(){
     });
     
 
-    // function modalPop(data) {
-    //   $('#locationModal').modal(data)
-    // }
+    function modalPop(data) {
+      $('#locationModal').modal(data)
+    }
     
     
 });

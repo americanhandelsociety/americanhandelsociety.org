@@ -61,7 +61,7 @@ $(function() {
             mapObjCopy.map = this.map
 
             if (address != "") {
-                // $("#reset").show()
+                $("#reset").show()
                 if (address.toLowerCase().indexOf(this.locationScope) == -1) {
                     address = address + " " + locationScope;
                 }
@@ -81,15 +81,21 @@ $(function() {
                         var latlng = L.latLng(mapObjCopy.currentPinpoint[0], mapObjCopy.currentPinpoint[1]);
 
                         $.getJSON("assets/americanhandelsociety_map.geojson",function(data) {
-                            mapObjCopy.districts = L.mapbox.featureLayer(data)
-
-                            mapObjCopy.districts.setFilter(function showLocations(feature) {
-                                return latlng.distanceTo(L.latLng(feature.geometry.coordinates[1], feature.geometry.coordinates[0])) < radius
+                            mapObjCopy.districts = L.geoJson(data, {
+                                onEachFeature: mapObjCopy.onEachFeature,
+                                filter: filterLocations,
                             });
 
+                            function filterLocations(feature) {
+                                if (feature.properties) {
+                                    featureLatLong = L.latLng(feature.geometry.coordinates[1], feature.geometry.coordinates[0])
+                                    
+                                    return latlng.distanceTo(featureLatLong) < radius
+                                }
+
+                            }
                             mapObjCopy.districts.addTo(mapObjCopy.map);
                         });
-
                     }
                 });
             } // Close geocoder.geocode
@@ -118,8 +124,10 @@ $(function() {
         addCircle: function(radius) {
             this.radiusCircle = L.circle(this.currentPinpoint, radius, {
                                     opacity: 1,
+                                    color:'#91a8ba',
                                     weight: 1,
-                                    fillOpacity: 0.4
+                                    fillOpacity: 0.5,
+                                    fillColor:'#91a8ba',
                                 });
 
             this.radiusCircle.addTo(this.map)
@@ -137,54 +145,31 @@ $(function() {
             this.centerMark.addTo(this.map);
         },
 
-
-
-    // TODO: do we need `L.geoJson` for this?
-    onEachFeature: function(feature, layer) {
-        if (feature.properties) {
-
-            var center = layer.getBounds().getCenter();
-
-            if (map){
-                layer.layerPopup = L.popup(customOptions, layer)
-                                    .setLatLng(center)
-                                    .setContent(feature.properties.popupContent);
-
+        onEachFeature: function(feature, layer) {
+            if (feature.properties) {
                 layer.on('click', function(e){
-                    console.log("asdkfjl")
-                    window.location = feature.properties.detail_link
-                });
+                    data = feature.properties
+                    // Clear previous content
+                    $('.short-description, #address-header, #long-description, #info-url').empty();
 
-                layer.on('mouseover', function(e){
-                    console.log(e.target.feature.properties)
-                    infoBox.update(e.target.feature.properties);
-                    e.target.setStyle({'fillOpacity': 0.6, 'color': "{{MAP_CONFIG.highlight_color}}"});
-                });
+                    // Add new content
+                    $('.short-description').append(data.short_description);
+                    $('#address-header').append('<i class="fa fa-map-marker" aria-hidden="true"></i> ' + data.address);
+                    $('#long-description').append(data.long_description);
 
-                layer.on('mouseout', function(e){
-                    infoBox.clear();
-                    e.target.setStyle({'fillOpacity': 0.2, 'color': "{{MAP_CONFIG.color}}"});
-                })
+                    if (data.info_url) {
+                    infoUrl = "<a href='" + data.info_url + "' target='_blank'><strong><i class='fa fa-info-circle' aria-hidden='true'></i> Learn more</strong></a>"
+                    console.log(infoUrl)
+                    $('#info-url').append(infoUrl);
+                    }
 
-                layer.on('tableover', function(e){
-                    infoBox.update(e.target.feature.properties);
-                    e.target.setStyle({'fillOpacity': 0.6, 'color': "{{MAP_CONFIG.highlight_color}}"})
-                });
-
-                layer.on('tableout', function(e){
-                    infoBox.clear();
-                    map.closePopup(e.target.layerPopup);
-                    e.target.setStyle({'fillOpacity': 0.2, 'color': "{{MAP_CONFIG.color}}"});
+                    // Open the modal
+                    $('#locationModal').modal(data)
                 });
             }
-        }
-    }
-
-
-
+        },
 
     } // Close MapObj
-
 
     // Create a new instance of the MapObj
     var myMap = new MapObj
@@ -193,12 +178,8 @@ $(function() {
     myMap.addInfoBox('bottomright', 'infoBox', 'Click on a location to learn more');
     
     $.getJSON("assets/americanhandelsociety_map.geojson",function(data) {
-        myMap.districts = L.mapbox.featureLayer(data, {
-            style: {opacity: 1, 
-                    weight: 1, 
-                    color: "#333", 
-                    fillOpacity: 0 },
-            onEachFeature: onEachFeature
+         myMap.districts = L.geoJson(data, {
+            onEachFeature: myMap.onEachFeature
         });
         myMap.districts.addTo(myMap.map);
     });
