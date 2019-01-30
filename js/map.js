@@ -4,7 +4,7 @@ $(function() {
         this.locationScope = 'London'.toLowerCase();
         this.currentPinpoint = null;
         this.centerMark = null;
-        this.districts = null;
+        this.locations = null;
         this.search_result = null;
         this.map = null;
         this.centerMark = '';
@@ -75,12 +75,12 @@ $(function() {
                         $this.addCircle(radius);
                         $this.addIcon()
                         
-                        $this.map.removeLayer($this.districts);
+                        $this.map.removeLayer($this.locations);
 
                         var latlng = L.latLng($this.currentPinpoint[0], $this.currentPinpoint[1]);
 
                         $.getJSON("assets/americanhandelsociety_map.geojson",function(data) {
-                            $this.districts = L.geoJson(data, {
+                            $this.locations = L.geoJson(data, {
                                 onEachFeature: $this.onEachFeature,
                                 filter: filterLocations,
                             });
@@ -93,7 +93,7 @@ $(function() {
                                 }
 
                             }
-                            $this.districts.addTo($this.map);
+                            $this.locations.addTo($this.map);
                         });
                     }
                 });
@@ -193,10 +193,10 @@ $(function() {
     myMap.addInfoBox('bottomleft', 'infoBox', 'Click on a location to learn more');
     
     $.getJSON("assets/americanhandelsociety_map.geojson",function(data) {
-         myMap.districts = L.geoJson(data, {
+         myMap.locations = L.geoJson(data, {
             onEachFeature: myMap.onEachFeature
         });
-        myMap.districts.addTo(myMap.map);
+        myMap.locations.addTo(myMap.map);
     });
 
     $("#btnSearch").on("click", function() {
