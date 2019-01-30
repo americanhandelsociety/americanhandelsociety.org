@@ -23,7 +23,7 @@ $(function() {
             L.mapbox.accessToken = 'pk.eyJ1IjoicmVnaW5hZmNvbXB0b24iLCJhIjoiY2pxYnJxcGJ1MW53bTQybXQ5NWlqZWlnMyJ9.usfLqWOMKjLsr1jLxd78mg';
 
             this.map = L.map('map_canvas', {
-                center: [51.509865, -0.118092],
+                center: [51.5390, -0.1426],
                 zoom: 11,
                 scrollWheelZoom: false,
             });
@@ -50,7 +50,7 @@ $(function() {
 
         doSearch: function() {
             this.clearSearch();
-            var mapObjCopy = this;
+            var $this = this;
 
             var radius = $("#search-radius").val();
             if (radius == null && address != "") {
@@ -58,7 +58,6 @@ $(function() {
             }
 
             var address = $("#search-address").val();
-            mapObjCopy.map = this.map
 
             if (address != "") {
                 $("#reset").show()
@@ -68,21 +67,21 @@ $(function() {
 
                 this._geocoder.geocode( { 'address': address}, function(results, status) {
                     if (status == google.maps.GeocoderStatus.OK) {
-                        mapObjCopy.currentPinpoint = [results[0].geometry.location.lat(), results[0].geometry.location.lng()];
+                        $this.currentPinpoint = [results[0].geometry.location.lat(), results[0].geometry.location.lng()];
 
                         $.address.parameter('address', encodeURIComponent(address));
 
-                        mapObjCopy.setZoom(radius);
-                        mapObjCopy.addCircle(radius);
-                        mapObjCopy.addIcon()
+                        $this.setZoom(radius);
+                        $this.addCircle(radius);
+                        $this.addIcon()
                         
-                        mapObjCopy.map.removeLayer(mapObjCopy.districts);
+                        $this.map.removeLayer($this.districts);
 
-                        var latlng = L.latLng(mapObjCopy.currentPinpoint[0], mapObjCopy.currentPinpoint[1]);
+                        var latlng = L.latLng($this.currentPinpoint[0], $this.currentPinpoint[1]);
 
                         $.getJSON("assets/americanhandelsociety_map.geojson",function(data) {
-                            mapObjCopy.districts = L.geoJson(data, {
-                                onEachFeature: mapObjCopy.onEachFeature,
+                            $this.districts = L.geoJson(data, {
+                                onEachFeature: $this.onEachFeature,
                                 filter: filterLocations,
                             });
 
@@ -94,7 +93,7 @@ $(function() {
                                 }
 
                             }
-                            mapObjCopy.districts.addTo(mapObjCopy.map);
+                            $this.districts.addTo($this.map);
                         });
                     }
                 });
@@ -111,12 +110,12 @@ $(function() {
 
         setZoom: function(radius) {
             var zoom = '';
-            if (radius >= 8050) zoom = 16; // 5 miles
-            else if (radius >= 3220) zoom = 13; // 2 miles
-            else if (radius >= 1610) zoom = 14; // 1 mile
-            else if (radius >= 805) zoom = 15; // 1/2 mile
-            else if (radius >= 400) zoom = 16; // 1/4 mile
-            else zoom = 16;
+            if (radius >= 8050) zoom = 11; // 5 miles
+            else if (radius >= 3220) zoom = 12; // 2 miles
+            else if (radius >= 1610) zoom = 13; // 1 mile
+            else if (radius >= 805) zoom = 14; // 1/2 mile
+            else if (radius >= 400) zoom = 15; // 1/4 mile
+            else zoom = 15;
 
             this.map.setView(new L.LatLng( this.currentPinpoint[0], this.currentPinpoint[1] ), zoom)
         },
@@ -146,9 +145,13 @@ $(function() {
         },
 
         onEachFeature: function(feature, layer) {
+            var mapName = "#map_canvas div"
+            var $this = this;
+
             if (feature.properties) {
+                console.log($this)
+                var data = feature.properties
                 layer.on('click', function(e){
-                    data = feature.properties
                     // Clear previous content
                     $('.short-description, #address-header, #long-description, #info-url').empty();
 
@@ -159,12 +162,24 @@ $(function() {
 
                     if (data.info_url) {
                     infoUrl = "<a href='" + data.info_url + "' target='_blank'><strong><i class='fa fa-info-circle' aria-hidden='true'></i> Learn more</strong></a>"
-                    console.log(infoUrl)
                     $('#info-url').append(infoUrl);
                     }
 
                     // Open the modal
                     $('#locationModal').modal(data)
+                });
+
+                layer.on('mouseover', function(e) {
+                    $(mapName).css('cursor','pointer');
+                    var short_description = "<h4 class='infoBox-title'> " + data.short_description + "</h4>"
+                    var address = "<p><i class='fa fa-map-marker' aria-hidden='true'></i> " + data.address + "</p>"
+
+                    $('html').find("div.infoBox").html(short_description + address);
+                });
+
+                layer.on('mouseout', function() {
+                    $(mapName).css('cursor','inherit');
+                    $('html').find("div.infoBox").html('Click on a location to learn more');
                 });
             }
         },
@@ -175,7 +190,7 @@ $(function() {
     var myMap = new MapObj
 
     myMap.initiateMap()
-    myMap.addInfoBox('bottomright', 'infoBox', 'Click on a location to learn more');
+    myMap.addInfoBox('bottomleft', 'infoBox', 'Click on a location to learn more');
     
     $.getJSON("assets/americanhandelsociety_map.geojson",function(data) {
          myMap.districts = L.geoJson(data, {
