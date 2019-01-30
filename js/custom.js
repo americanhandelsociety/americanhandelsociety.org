@@ -1,4 +1,13 @@
-$(document).ready(function() {
+$(window).resize(function () {
+  var h = $(window).height(),
+    offsetTop = 125; // Calculate the top offset
+
+  $('#map_canvas').css('height', (h - offsetTop));
+}).resize();
+
+$(document).ready(function(){
+
+    // Existing JS
     $('#loadOverlay').fadeOut('slow');
 
     $('#showNews').on('click', function(){
@@ -13,8 +22,10 @@ $(document).ready(function() {
       $('#showNews').show();
     });
     
+
     function modalPop(data) {
-      console.log("clickeddddd")
       $('#locationModal').modal(data)
     }
+    
+    
 });
