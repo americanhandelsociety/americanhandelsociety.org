@@ -1,7 +1,8 @@
 # americanhandelsociety.org
+
 The [American Handel Society (AHS)](http://americanhandelsociety.org/), an established 501(c)3 non-profit, seeks to foster study of the life, works, and times of George Frideric Handel and to encourage and support the performance of his music.
 
-This repo contains the code and content for the AHS website. It's open source! Use this code as the initial blueprint for building other such organizational pages. 
+This repo contains the code and content for the AHS website. It's open source! Use this code as the initial blueprint for building other such organizational pages.
 
 ## Get Started
 
@@ -25,7 +26,7 @@ Then, navigate to http://localhost:4000/, and view the site in your browser.
 be jekyll serve -w
 cp -R _site ../
 
-# Go to the deploy branch, and move _site from elsewhere to here. 
+# Go to the deploy branch, and move _site from elsewhere to here.
 git co gh-pages
 cp -R ../_site .
 
