@@ -1,4 +1,4 @@
-# americanhandelsociety.org
+# [DEPRECATED] americanhandelsociety.org
 
 The [American Handel Society (AHS)](http://americanhandelsociety.org/), an established 501(c)3 non-profit, seeks to foster study of the life, works, and times of George Frideric Handel and to encourage and support the performance of his music.
 
